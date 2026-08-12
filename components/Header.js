@@ -20,6 +20,6 @@ export default function Header() {
         <span /><span />
       </button>
     </div>
-    <div className={`mobile-menu ${open ? 'is-open' : ''}`}>{links.map(([label, href], i) => <Link href={href} key={href} style={{ transitionDelay: `${i * 70}ms` }} onClick={() => setOpen(false)}>{label}</Link>)}<p>Karachi, Pakistan<br />+91 98765 43210</p></div>
+    <div className={`mobile-menu ${open ? 'is-open' : ''}`}>{links.map(([label, href], i) => <Link href={href} key={href} style={{ transitionDelay: `${i * 70}ms` }} onClick={() => setOpen(false)}>{label}</Link>)}<p>DHA Phase 6, Lahore<br />0321 2111134</p></div>
   </header>;
 }

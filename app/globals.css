@@ -134,25 +134,35 @@ select {
 }
 
 .brand-mark--small {
-    width: 94px;
+    width: 116px;
 }
 
 .brand-mark--small .brand-top {
-    font-size: 15px
+    font-size: 18px
 }
 
 .brand-mark--small .brand-bottom {
-    font-size: 13px
+    font-size: 16px
 }
 
 .brand-mark--small .mark-rule {
-    font-size: 4px;
-    gap: 3px;
-    margin: 2px 0
+    font-size: 5px;
+    gap: 4px;
+    margin: 3px 0
 }
 
 .brand-mark--small .mark-rule i {
-    width: 12px
+    width: 15px
+}
+
+.brand-mark--small svg {
+    height: 14px;
+    margin: 5px auto 2px
+}
+
+.brand-mark--small em {
+    font-size: 4.6px;
+    letter-spacing: .28em
 }
 
 .menu-button {
@@ -229,7 +239,7 @@ h2 {
 h1 i,
 h2 i {
     font-weight: 500;
-    color: #ddc96e
+    color: #c9a227
 }
 
 .hero-copy {
@@ -996,6 +1006,142 @@ footer {
     background: #090909
 }
 
+/* Coming soon launch page */
+.coming-soon {
+    min-height: 100svh;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 110px max(6vw, 32px) 42px;
+    background: radial-gradient(ellipse at 78% 16%, #30250f 0%, #15130f 35%, #09090a 74%);
+    color: var(--cream)
+}
+
+.coming-soon__texture {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    opacity: .35;
+    background-image: linear-gradient(115deg, transparent 0 48%, rgba(201, 162, 39, .06) 48.1% 48.25%, transparent 48.35%), radial-gradient(circle at 75% 35%, rgba(201, 162, 39, .2) 0 1px, transparent 1.5px);
+    background-size: 100% 100%, 37px 37px
+}
+
+.coming-soon__content {
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.coming-soon__content .brand-mark {
+    width: min(280px, 68vw);
+    margin-bottom: 47px
+}
+
+.coming-soon__rule {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--gold);
+    font-size: 10px;
+    margin-bottom: 28px
+}
+
+.coming-soon__rule span {
+    width: 72px;
+    height: 1px;
+    background: var(--gold)
+}
+
+.coming-soon h1 {
+    font-size: clamp(49px, 7vw, 95px);
+    letter-spacing: -.045em
+}
+
+.coming-soon__copy {
+    max-width: 530px;
+    margin: 25px 0 31px;
+    color: #b9b3a7;
+    font-size: 15px;
+    line-height: 1.8
+}
+
+.coming-soon__whatsapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 15px 19px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    font-weight: 600;
+    font-size: 10px;
+    transition: .25s
+}
+
+.coming-soon__whatsapp:hover {
+    color: var(--ink);
+    background: var(--gold)
+}
+
+.coming-soon__whatsapp span {
+    font-size: 17px
+}
+
+.coming-soon__details {
+    position: absolute;
+    inset: auto max(6vw, 32px) 42px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(201, 162, 39, .42)
+}
+
+.coming-soon__details>div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px
+}
+
+.coming-soon__details span,
+.coming-soon__footer {
+    font-size: 8px;
+    color: var(--gold);
+    letter-spacing: .19em;
+    text-transform: uppercase
+}
+
+.coming-soon__details p,
+.coming-soon__details a {
+    margin: 0;
+    color: #c4bfb5;
+    font-size: 12px;
+    line-height: 1.7
+}
+
+.coming-soon__details a {
+    color: var(--cream);
+    font: 500 19px var(--serif)
+}
+
+.coming-soon__footer {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 11px;
+    color: #706c65;
+    white-space: nowrap
+}
+
 .footer-grid {
     max-width: 1380px;
     margin: auto;
@@ -1074,9 +1220,97 @@ footer>.footer-grid>div:last-child>a {
     font-size: 8px
 }
 
+.whatsapp-button {
+    position: fixed;
+    z-index: 40;
+    right: 25px;
+    bottom: 25px;
+    width: 55px;
+    height: 55px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: #fff;
+    background: #25d366;
+    box-shadow: 0 9px 25px rgba(0, 0, 0, .32), 0 0 0 0 rgba(37, 211, 102, .5);
+    animation: whatsapp-pulse 2.6s ease-out infinite;
+    transition: transform .22s ease, background .22s ease
+}
+
+.whatsapp-button:hover {
+    background: #1daf57;
+    transform: translateY(-3px) scale(1.04);
+    animation-play-state: paused
+}
+
+.whatsapp-button svg {
+    width: 30px;
+    height: 30px
+}
+
+.whatsapp-tooltip {
+    position: absolute;
+    right: 66px;
+    padding: 7px 10px;
+    color: var(--cream);
+    background: #171717;
+    border: 1px solid rgba(201, 162, 39, .55);
+    white-space: nowrap;
+    font-size: 9px;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateX(5px);
+    pointer-events: none;
+    transition: .22s
+}
+
+.whatsapp-button:hover .whatsapp-tooltip {
+    opacity: 1;
+    transform: none
+}
+
+@keyframes whatsapp-pulse {
+
+    0%,
+    68%,
+    100% {
+        box-shadow: 0 9px 25px rgba(0, 0, 0, .32), 0 0 0 0 rgba(37, 211, 102, .45)
+    }
+
+    77% {
+        box-shadow: 0 9px 25px rgba(0, 0, 0, .32), 0 0 0 13px rgba(37, 211, 102, 0)
+    }
+}
+
 @media(max-width:800px) {
     .nav-shell {
         padding: 0 24px
+    }
+
+    .site-header {
+        height: 78px
+    }
+
+    .brand-mark--small {
+        width: 101px
+    }
+
+    .brand-mark--small .brand-top {
+        font-size: 16px
+    }
+
+    .brand-mark--small .brand-bottom {
+        font-size: 14px
+    }
+
+    .brand-mark--small svg {
+        height: 12px;
+        margin: 4px auto 1px
+    }
+
+    .brand-mark--small em {
+        font-size: 4px
     }
 
     .nav-shell nav {
@@ -1090,7 +1324,7 @@ footer>.footer-grid>div:last-child>a {
     .mobile-menu {
         display: flex;
         position: fixed;
-        inset: 83px 0 0;
+        inset: 78px 0 0;
         background: #0b0b0c;
         flex-direction: column;
         padding: 11vh 9vw;
@@ -1329,6 +1563,47 @@ footer>.footer-grid>div:last-child>a {
     .brand-mark svg {
         width: 100%
     }
+
+    .whatsapp-button {
+        right: 18px;
+        bottom: 18px;
+        width: 51px;
+        height: 51px
+    }
+
+    .whatsapp-tooltip {
+        display: none
+    }
+
+    .coming-soon {
+        justify-content: flex-start;
+        padding: 118px 25px 180px
+    }
+
+    .coming-soon__content .brand-mark {
+        margin-bottom: 35px
+    }
+
+    .coming-soon__rule {
+        margin-bottom: 23px
+    }
+
+    .coming-soon__rule span {
+        width: 42px
+    }
+
+    .coming-soon__copy {
+        font-size: 14px;
+        margin: 21px 0 26px
+    }
+
+    .coming-soon__details {
+        inset: auto 25px 41px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 17px;
+        align-items: start
+    }
 }
 
 @media(prefers-reduced-motion:reduce) {
@@ -1339,5 +1614,9 @@ footer>.footer-grid>div:last-child>a {
         animation-duration: .01ms !important;
         transition-duration: .01ms !important;
         scroll-behavior: auto !important
+    }
+
+    .whatsapp-button {
+        animation: none
     }
 }
