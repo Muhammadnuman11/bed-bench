@@ -1,4 +1,31 @@
 'use client';
 import { useState } from 'react'; import Header from '@/components/Header'; import Footer from '@/components/Footer'; import ProductCard from '@/components/ProductCard'; import Reveal from '@/components/Reveal'; import { products } from '@/lib/catalog'; import Link from 'next/link';
-const filters = ['All', 'Beds', 'Sofas & Sectionals', 'Benches & Ottomans', 'Wardrobes & Storage', 'Dining', 'Coffee & Side Tables', 'Recliners & Chairs'];
-export default function Categories() { const [active, setActive] = useState('All'); const visible = active === 'All' ? products : products.filter(p => p.category === active); return <><Header/><main><section className="catalogue-hero"><p className="overline">The catalogue</p><h1>Our <i>collections.</i></h1><p>Furniture for the rooms that matter most.</p></section><section className="catalogue section-pad"><div className="filter-bar">{filters.map(filter=><button key={filter} onClick={()=>setActive(filter)} className={active === filter ? 'active' : ''}>{filter}</button>)}</div><p className="results-count">{visible.length} pieces in this collection</p><div className="products-grid catalogue-grid">{visible.map((product,i)=><Reveal key={product.name} delay={(i%3)*.08}><ProductCard product={product}/></Reveal>)}</div></section><section className="bespoke"><div><p className="overline">Your idea, beautifully made</p><h2>Looking for something <i>custom?</i></h2></div><p>We design bespoke furniture to fit your proportions, your palette and your way of living.</p><Link className="gold-button" href="/contact?subject=Bespoke%20Furniture">Start a conversation <span>→</span></Link></section></main><Footer/></>; }
+const filters = ['All', 'Beds', 'Sofas & Sectionals', 'Dining Chairs', 'Informal Chairs', 'Center Tables', 'Ottomans', 'Sideboards', 'TV Consoles', 'Cushions'];
+export default function Categories() {
+    const [active, setActive] = useState('All');
+    const visible = active === 'All' ? products : products.filter(p => p.category === active); return <>
+        <Header />
+        <main>
+            <section className="catalogue-hero">
+                <p className="overline">The catalogue</p>
+                <h1>Our <i>collections.</i></h1>
+                <p>Furniture for the rooms that matter most.</p>
+            </section>
+            <section className="catalogue section-pad">
+                <div className="filter-bar">{filters.map(filter => <button key={filter} onClick={() => setActive(filter)} className={active === filter ? 'active' : ''}>{filter}</button>)}
+                </div>
+                <p className="results-count">{visible.length} pieces in this collection</p>
+                <div className="products-grid catalogue-grid">{visible.map((product, i) => <Reveal key={product.name} delay={(i % 3) * .08}><ProductCard product={product} /></Reveal>)}
+                </div>
+            </section>
+            <section className="bespoke">
+                <div>
+                    <p className="overline">Your idea, beautifully made</p>
+                    <h2>Looking for something <i>custom?</i></h2>
+                </div>
+                <p>We design bespoke furniture to fit your proportions, your palette and your way of living.</p>
+                <Link className="gold-button" href="/contact?subject=Bespoke%20Furniture">Start a conversation <span>→</span></Link>
+            </section>
+        </main>
+        <Footer /></>;
+}

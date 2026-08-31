@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { BedBenchMark } from './Mark';
 
-const links = [['Home', '/'], ['About', '/about'], ['Collections', '/categories'], ['Contact', '/contact']];
+const links = [['Home', '/'], ['About', '/about'], ['Collections', '/categories'], ['Contact', '/contact'], ['Admin', '/admin']];
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [solid, setSolid] = useState(false);

@@ -31,7 +31,12 @@ body {
 
 a {
     color: inherit;
-    text-decoration: none
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
 }
 
 button,
@@ -589,7 +594,7 @@ h2 i {
     min-height: 48vh;
     display: flex;
     align-items: flex-end;
-    background: linear-gradient(90deg, rgba(8, 8, 8, .86), rgba(8, 8, 8, .27)), url('https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=2200&q=85') center/cover
+    background: linear-gradient(90deg, rgba(8, 8, 8, .86), rgba(8, 8, 8, .27)), url('/about-banner.JPG') center/cover
 }
 
 .page-hero h1 {
@@ -993,17 +998,29 @@ h2 i {
     margin-top: 30px
 }
 
-.follow-band a {
+.follow-socials a {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: .16em;
-    color: var(--gold)
+    color: var(--gold);
+    padding: 9px 12px;
+    border: 1px solid transparent;
+    transition: .2s
 }
 
-footer {
-    border-top: 1px solid #59451b;
-    padding: 75px max(4.5vw, 30px) 26px;
-    background: #090909
+.follow-socials a:hover,
+.follow-socials a:focus-visible {
+    border-color: #755e26;
+    background: #171717
+}
+
+.follow-socials svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor
 }
 
 /* Coming soon launch page */
@@ -1147,7 +1164,9 @@ footer {
     margin: auto;
     display: grid;
     grid-template-columns: 1.25fr .65fr 1fr;
-    gap: 11vw
+    gap: 11vw;
+    padding: 0 40px;
+    padding-top: 40px;
 }
 
 .footer-copy {
@@ -1197,20 +1216,55 @@ footer>.footer-grid>div:last-child>a {
 }
 
 .socials a {
-    font-size: 9px !important;
-    letter-spacing: .04em;
+    position: relative;
     color: var(--gold) !important;
     border: 1px solid #755e26;
     width: 24px;
     height: 24px;
     display: grid;
-    place-items: center
+    place-items: center;
+    transition: .2s
+}
+
+.socials a:hover,
+.socials a:focus-visible {
+    color: var(--ink) !important;
+    background: var(--gold);
+    border-color: var(--gold)
+}
+
+.socials svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor
+}
+
+.social-tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(3px);
+    padding: 4px 7px;
+    color: var(--cream);
+    background: #171717;
+    border: 1px solid #755e26;
+    font-size: 9px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: .2s
+}
+
+.socials a:hover .social-tooltip,
+.socials a:focus-visible .social-tooltip {
+    opacity: 1;
+    transform: translateX(-50%)
 }
 
 .footer-base {
     max-width: 1380px;
     margin: 66px auto 0;
-    padding-top: 19px;
+    padding: 20px;
     border-top: 1px solid rgba(201, 162, 39, .45);
     display: flex;
     justify-content: space-between;
@@ -1218,6 +1272,302 @@ footer>.footer-grid>div:last-child>a {
     text-transform: uppercase;
     letter-spacing: .12em;
     font-size: 8px
+}
+
+.admin-auth,
+.dashboard {
+    min-height: 100vh;
+    background: var(--ink);
+    color: var(--cream)
+}
+
+.admin-auth {
+    display: grid;
+    place-items: center;
+    padding: 40px 25px
+}
+
+.admin-auth__panel {
+    width: min(100%, 520px);
+    padding: 42px;
+    border: 1px solid #59451b;
+    background: #151515
+}
+
+.admin-auth h1,
+.dashboard h1 {
+    font-size: clamp(42px, 5vw, 66px)
+}
+
+.admin-form {
+    margin-top: 38px
+}
+
+.admin-form label {
+    display: block;
+    margin-bottom: 20px;
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: .14em;
+    text-transform: uppercase
+}
+
+.admin-form input {
+    display: block;
+    width: 100%;
+    margin-top: 4px;
+    padding: 4px 0;
+    color: var(--cream);
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #675728;
+    outline: 0
+}
+
+.admin-form input:focus {
+    border-color: var(--gold)
+}
+
+.admin-form button[disabled] {
+    opacity: .6
+}
+
+.admin-error,
+.form-error {
+    color: #d98774;
+    font-size: 12px
+}
+
+.dashboard {
+    padding: 70px max(5vw, 25px)
+}
+
+.dashboard-header,
+.dashboard-stats,
+.query-list {
+    max-width: 1180px;
+    margin: auto
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+    border-bottom: 1px solid #59451b;
+    padding-bottom: 35px
+}
+
+.dashboard-logout {
+    padding: 11px 16px;
+    color: var(--gold);
+    background: transparent;
+    border: 1px solid #755e26;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: .13em;
+    font-size: 10px
+}
+
+.dashboard-logout:hover {
+    color: var(--ink);
+    background: var(--gold)
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 28px
+}
+
+.dashboard-stats div,
+.query-item,
+.query-empty {
+    padding: 22px;
+    border: 1px solid #39301d;
+    background: #151515
+}
+
+.dashboard-stats span,
+.query-list__heading span,
+.query-item__meta span {
+    color: #9d988e;
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase
+}
+
+.dashboard-stats strong {
+    display: block;
+    margin-top: 7px;
+    color: var(--gold);
+    font: 500 29px var(--serif)
+}
+
+.query-list {
+    margin-top: 65px
+}
+
+.query-list__heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 18px
+}
+
+.query-list__heading h2 {
+    font-size: 32px
+}
+
+.query-filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid #39301d
+}
+
+.query-filters button,
+.query-item__actions button,
+.query-pagination button {
+    padding: 10px 13px;
+    color: #9d988e;
+    background: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font: inherit;
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase
+}
+
+.query-filters button b {
+    margin-left: 7px;
+    color: var(--gold);
+    font-weight: 500
+}
+
+.query-filters button.is-active {
+    color: var(--gold);
+    border-color: #755e26;
+    border-bottom-color: var(--ink)
+}
+
+.query-item.is-unread {
+    border-left: 3px solid var(--gold)
+}
+
+.query-item {
+    margin-top: 12px
+}
+
+.query-item__meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 8px
+}
+
+.query-item__meta strong {
+    font: 500 24px var(--serif)
+}
+
+.query-item__meta time {
+    color: #9d988e;
+    font-size: 10px;
+    letter-spacing: .08em;
+    text-transform: uppercase
+}
+
+.query-status {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--gold);
+    font-size: 9px;
+    letter-spacing: .14em;
+    text-transform: uppercase
+}
+
+.query-item__contact a {
+    display: inline-block;
+    margin-right: 20px;
+    color: var(--gold);
+    font-size: 12px
+}
+
+.query-item p {
+    color: #c1bcb2;
+    font-size: 14px
+}
+
+.query-item .query-item__interest {
+    margin-bottom: 0;
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: .14em;
+    text-transform: uppercase
+}
+
+.query-empty {
+    color: #9d988e
+}
+
+.query-item__actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 18px
+}
+
+.query-item__actions button {
+    padding: 8px 10px;
+    border-color: #59451b;
+    color: var(--gold)
+}
+
+.query-item__actions button:hover,
+.query-pagination button:hover:not(:disabled) {
+    background: var(--gold);
+    color: var(--ink)
+}
+
+.query-item__actions button.is-danger {
+    color: #d98774;
+    border-color: #63382e
+}
+
+.query-item__actions button:disabled,
+.query-pagination button:disabled {
+    cursor: not-allowed;
+    opacity: .45
+}
+
+.query-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    color: #9d988e;
+    font-size: 11px
+}
+
+.query-pagination button {
+    border-color: #59451b;
+    color: var(--gold)
+}
+
+@media (max-width: 700px) {
+    .dashboard-stats {
+        grid-template-columns: repeat(2, 1fr)
+    }
+
+    .query-item__meta {
+        display: block
+    }
+
+    .query-item__meta time {
+        display: block;
+        margin-top: 8px
+    }
 }
 
 .whatsapp-button {
