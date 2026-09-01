@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { BedBenchMark } from './Mark';
 
-const links = [['Home', '/'], ['About', '/about'], ['Collections', '/categories'], ['Contact', '/contact'], ['Admin', '/admin']];
+const links = [['Home', '/'], ['About', '/about'], ['Collections', '/categories'], ['Projects', '/projects'], ['Contact', '/contact']];
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [solid, setSolid] = useState(false);
@@ -16,10 +16,10 @@ export default function Header() {
       </Link>
       <nav>{links.map(([label, href]) =>
         <Link href={href} key={href}>{label}</Link>)}</nav>
-      <button className="menu-button" onClick={() => setOpen(!open)} aria-label="Toggle navigation">
+      {/* <button className="menu-button" onClick={() => setOpen(!open)} aria-label="Toggle navigation">
         <span /><span />
-      </button>
+      </button> */}
     </div>
-    <div className={`mobile-menu ${open ? 'is-open' : ''}`}>{links.map(([label, href], i) => <Link href={href} key={href} style={{ transitionDelay: `${i * 70}ms` }} onClick={() => setOpen(false)}>{label}</Link>)}<p>DHA Phase 6, Lahore<br />0321 2111134</p></div>
+    {/* <div className={`mobile-menu ${open ? 'is-open' : ''}`}>{links.map(([label, href], i) => <Link href={href} key={href} style={{ transitionDelay: `${i * 70}ms` }} onClick={() => setOpen(false)}>{label}</Link>)}</div> */}
   </header>;
 }

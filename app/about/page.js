@@ -19,7 +19,7 @@ export default function About() {
             </section>
             <section className="image-quote">
                 <div className="image-panel">
-                    <Image fill sizes="60vw" src="/about-img-02.JPG" alt="Furniture workshop" />
+                    <Image fill sizes="60vw" src="/about-img-03.JPG" alt="Furniture workshop" />
                 </div>
                 <div>
                     <p className="overline">Made with intention</p>

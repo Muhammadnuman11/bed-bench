@@ -3,6 +3,9 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 
 export const metadata = {
   metadataBase: new URL('https://www.bedbench.com.pk/'),
+  icons: {
+    icon: '/icon.svg',
+  },
   title: {
     default: 'Bed Bench | Premium Furniture in Lahore',
     template: '%s | Bed Bench',

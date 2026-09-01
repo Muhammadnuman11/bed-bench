@@ -1,8 +1,27 @@
 'use client';
-import { useState } from 'react'; import Header from '@/components/Header'; import Footer from '@/components/Footer'; import ProductCard from '@/components/ProductCard'; import Reveal from '@/components/Reveal'; import { products } from '@/lib/catalog'; import Link from 'next/link';
-const filters = ['All', 'Beds', 'Sofas & Sectionals', 'Dining Chairs', 'Informal Chairs', 'Center Tables', 'Ottomans', 'Sideboards', 'TV Consoles', 'Cushions'];
+import { useEffect, useState } from 'react';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import ProductCard from '@/components/ProductCard';
+import Reveal from '@/components/Reveal';
+import { products } from '@/lib/catalog';
+import Link from 'next/link';
+const filters = ['All', 'Beds', 'Sofas', 'Dining Tables', 'Dining Chairs', 'Informal Chairs', 'Center Tables', 'Ottomans', 'Sideboards', 'LCD Rack', 'Cushions'];
 export default function Categories() {
     const [active, setActive] = useState('All');
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        const category = searchParams.get('category');
+
+        if (category && filters.includes(category)) {
+            setActive(category);
+            return;
+        }
+
+        setActive('All');
+    }, []);
+
     const visible = active === 'All' ? products : products.filter(p => p.category === active); return <>
         <Header />
         <main>
